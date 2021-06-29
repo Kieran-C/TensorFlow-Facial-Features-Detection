@@ -44,16 +44,16 @@ def maleModelRun(model, data, normalizedImageArray):
     data[0] = normalizedImageArray
     prediction = model.predict(data)
     if prediction[0, 0] >= 0.89:
-        results.append("DMALE")
+        results.append("DEFINITELY MALE")
         print("The person is definitely MALE")
     elif prediction[0, 1] >= 0.89:
-        results.append("DFEMALE")
+        results.append("DEFINITELY FEMALE")
         print("The person is definitely FEMALE")
     elif prediction[0, 0] >= 0.59:
-        results.append("PMALE")
+        results.append("PROBABLY MALE")
         print("The person is probably MALE")
     elif prediction[0, 1] >= 0.59:
-        results.append("PFEMALE")
+        results.append("PROBABLY FEMALE")
         print("The person is probably FEMALE")
     else:
         results.append("NA")
@@ -64,16 +64,16 @@ def glassesModelRun(model, data, normalizedImageArray):
     data[0] = normalizedImageArray
     prediction = model.predict(data)
     if prediction[0, 0] >= 0.89:
-        results.append("DGLASSES")
+        results.append("DEFINITELY WEARING GLASSES")
         print("The person is definitely WEARING GLASSES")
     elif prediction[0, 1] >= 0.89:
-        results.append("DNOGLASSES")
+        results.append("DEFINITELY NOT WEARING GLASSES")
         print("The person is definitely NOT WEARING GLASSES")
     elif prediction[0, 0] >= 0.59:
-        results.append("PGLASSES")
+        results.append("PROBABLY WEARING GLASSES")
         print("The person is probably WEARING GLASSES")
     elif prediction[0, 1] >= 0.59:
-        results.append("PNOGLASSES")
+        results.append("PROBABLY NOT WEARING GLASSES")
         print("The person is probably NOT WEARING GLASSES")
     else:
         results.append("NA")
@@ -84,16 +84,16 @@ def blondeModelRun(model, data, normalizedImageArray):
     data[0] = normalizedImageArray
     prediction = model.predict(data)
     if prediction[0, 0] >= 0.89:
-        results.append("DBLONDE")
+        results.append("DEFINITELY BLONDE")
         print("The person is definitely BLONDE")
     elif prediction[0, 1] >= 0.89:
-        results.append("DNOBLONDE")
+        results.append("DEFINITELY NOT BLONDE")
         print("The person is definitely NOT BLONDE")
     elif prediction[0, 0] >= 0.59:
-        results.append("PBLONDE")
+        results.append("PROBABLY BLONDE")
         print("The person is probably BLONDE")
     elif prediction[0, 1] >= 0.59:
-        results.append("PNOBLONDE")
+        results.append("PROBABLY NOT BLONDE")
         print("The person is probably NOT BLONDE")
     else:
         results.append("NA")
