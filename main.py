@@ -1,8 +1,14 @@
+import webbrowser
+from threading import Timer
+
 import tensorflow.keras
 from PIL import Image, ImageOps
 import numpy as np
 from tkinter import Tk  # from tkinter import Tk for Python 3.x
 from tkinter.filedialog import askopenfilename
+from flask import Flask, redirect, render_template
+
+app = Flask(__name__)
 
 results = []
 
@@ -11,6 +17,9 @@ def fileSelector():
     Tk().withdraw()  # we don't want a full GUI, so keep the root window from appearing
     filename = askopenfilename()  # show an "Open" dialog box and return the path to the selected file
     return filename
+
+
+imagePath = fileSelector()
 
 
 def maleModelSetup(normalizedImageArray):
@@ -29,6 +38,7 @@ def blondeModelSetup(normalizedImageArray):
     model = tensorflow.keras.models.load_model('blondeModel.h5')
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
     blondeModelRun(model, data, normalizedImageArray)
+
 
 def maleModelRun(model, data, normalizedImageArray):
     data[0] = normalizedImageArray
@@ -89,6 +99,7 @@ def blondeModelRun(model, data, normalizedImageArray):
         results.append("NA")
         print("FAILED: ", prediction)
 
+
 def modelCaller(normalizedImageArray):
     maleModelSetup(normalizedImageArray)
     glassesModelSetup(normalizedImageArray)
@@ -113,16 +124,33 @@ def normalizeImageArray(imageArray):
     return (imageArray.astype(np.float32) / 127.0) - 1
 
 
-def start():
-    imagePath = fileSelector()
+@app.route("/")
+def mainScreen():
+    # imagePath = fileSelector()
     image = openImage(imagePath)
     imageArray = convertImageToImageArray(image)
-    showImage(image)
+    # showImage(image)
     normalizedImageArray = normalizeImageArray(imageArray)
     modelCaller(normalizedImageArray)
     print("\n\nArray: ")
     for x in results:
         print(x)
+    return redirect('/0')
 
 
-start()
+@app.route("/0")
+def resultsScreen():
+    return render_template(
+        'imageView.html',
+        filepath=imagePath,
+        aiResults=results
+    )
+
+
+def open_browser():
+    webbrowser.open_new('http://127.0.0.1:5000/')
+
+
+if __name__ == "__main__":
+    Timer(1, open_browser).start()
+    app.run()

@@ -1,0 +1,28 @@
+{#<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">#}
+{#<html></html>#}
+{##}
+{#{% block title %}{{ filepath}} {% endblock %}#}
+{##}
+{#{% block content %}#}
+{#<div class="container" style="width:100%;">#}
+{##}
+{#  <div class="row">#}
+{#    <div class="col-md-6">#}
+{#      #}
+{#    </div>#}
+{#  </div>#}
+{##}
+{#</div>#}
+{##}
+{#{% endblock %}#}
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Results<br></h1>
+<img src="{{ url_for('static', filename='file:///'+filepath) }}" class="img-responsive center-block" alt="">
+<
+</body>
+</html>
