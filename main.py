@@ -1,3 +1,4 @@
+import os
 import webbrowser
 from threading import Timer
 
@@ -140,9 +141,10 @@ def mainScreen():
 
 @app.route("/0")
 def resultsScreen():
+    full_filename = os.path.basename(imagePath)
     return render_template(
         'imageView.html',
-        filepath=imagePath,
+        filename=full_filename,
         aiResults=results
     )
 

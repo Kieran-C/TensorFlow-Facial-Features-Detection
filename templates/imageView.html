@@ -3,7 +3,7 @@
 <body>
 
 <h1>Results<br></h1>
-<img src="{{ url_for('static', filename='file:///'+filepath) }}" class="img-responsive center-block" alt="">
+<img src=" https://s3.eu-west-2.amazonaws.com/cloud.kierancaruana.com/ada/{{ filename }}" class="img-responsive center-block" alt='{{ filepath }}'>
 <ul>
     <li>This person is {{ aiResults[0] }}</li>
     <li>This person is {{ aiResults[1] }}</li>
