@@ -45,16 +45,16 @@ def maleModelRun(model, data, normalizedImageArray):
     data[0] = normalizedImageArray
     prediction = model.predict(data)
     if prediction[0, 0] >= 0.89:
-        results.append("DEFINITELY MALE")
+        results.append("DEFINITELY MALE (" + str((prediction[0,0])*100) + "%)")
         print("The person is definitely MALE")
     elif prediction[0, 1] >= 0.89:
-        results.append("DEFINITELY FEMALE")
+        results.append("DEFINITELY FEMALE (" + str((prediction[0,1])*100) + "%)")
         print("The person is definitely FEMALE")
     elif prediction[0, 0] >= 0.59:
-        results.append("PROBABLY MALE")
+        results.append("PROBABLY MALE (" + str((prediction[0,0])*100) + "%)")
         print("The person is probably MALE")
     elif prediction[0, 1] >= 0.59:
-        results.append("PROBABLY FEMALE")
+        results.append("PROBABLY FEMALE (" + str((prediction[0,1])*100) + "%)")
         print("The person is probably FEMALE")
     else:
         results.append("NA")
@@ -65,16 +65,16 @@ def glassesModelRun(model, data, normalizedImageArray):
     data[0] = normalizedImageArray
     prediction = model.predict(data)
     if prediction[0, 0] >= 0.89:
-        results.append("DEFINITELY WEARING GLASSES")
+        results.append("DEFINITELY WEARING GLASSES (" + str((prediction[0,0])*100) + "%)")
         print("The person is definitely WEARING GLASSES")
     elif prediction[0, 1] >= 0.89:
-        results.append("DEFINITELY NOT WEARING GLASSES")
+        results.append("DEFINITELY NOT WEARING GLASSES (" + str((prediction[0,1])*100) + "%)")
         print("The person is definitely NOT WEARING GLASSES")
     elif prediction[0, 0] >= 0.59:
-        results.append("PROBABLY WEARING GLASSES")
+        results.append("PROBABLY WEARING GLASSES (" + str((prediction[0,0])*100) + "%)")
         print("The person is probably WEARING GLASSES")
     elif prediction[0, 1] >= 0.59:
-        results.append("PROBABLY NOT WEARING GLASSES")
+        results.append("PROBABLY NOT WEARING GLASSES (" + str((prediction[0,1])*100) + "%)")
         print("The person is probably NOT WEARING GLASSES")
     else:
         results.append("NA")
@@ -85,16 +85,16 @@ def blondeModelRun(model, data, normalizedImageArray):
     data[0] = normalizedImageArray
     prediction = model.predict(data)
     if prediction[0, 0] >= 0.89:
-        results.append("DEFINITELY BLONDE")
+        results.append("DEFINITELY BLONDE (" + str((prediction[0,0])*100) + "%)")
         print("The person is definitely BLONDE")
     elif prediction[0, 1] >= 0.89:
-        results.append("DEFINITELY NOT BLONDE")
+        results.append("DEFINITELY NOT BLONDE (" + str((prediction[0,1])*100) + "%)")
         print("The person is definitely NOT BLONDE")
     elif prediction[0, 0] >= 0.59:
-        results.append("PROBABLY BLONDE")
+        results.append("PROBABLY BLONDE (" + str((prediction[0,0])*100) + "%)")
         print("The person is probably BLONDE")
     elif prediction[0, 1] >= 0.59:
-        results.append("PROBABLY NOT BLONDE")
+        results.append("PROBABLY NOT BLONDE (" + str((prediction[0,1])*100) + "%)")
         print("The person is probably NOT BLONDE")
     else:
         results.append("NA")
